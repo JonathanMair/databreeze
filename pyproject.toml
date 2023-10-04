@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "dirty-dictionary"
+version = "0.1.0"
+description = "utility to provide quick and dirty way of parsing a list of dictionaries that may have inconsistent keys"
+authors = ["Jonathan Mair <jonathan.mair@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "dirty_dictionary"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
