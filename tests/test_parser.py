@@ -1,4 +1,4 @@
-from dirty_dictionary.parser import holey_parsing, holey_nested_parsing
+from sensible_data.dictionary_fillna import list_fillna
 
 import random
 from typing import Dict, List, Any
@@ -28,7 +28,7 @@ def parse_hard_2_deep(list_: List, keys_: Any) -> List:
 
 
 def get_dummy_dict() -> Dict:
-    keys = list(range(1, 11))
+    keys = list(range(10, 500))
     length = random.randint(1,10)
     present = random.sample(keys, length)
     dict_ = {k: lorem.sentence() for k in present}
@@ -36,7 +36,7 @@ def get_dummy_dict() -> Dict:
 
 
 def get_dummy_dict_2_deep() -> Dict:
-    keys = list(range(1, 11))
+    keys = list(range(10, 500))
     length = random.randint(1, 10)
     present = random.sample(keys, length)
     dict_ = {k: get_dummy_dict() for k in present}
@@ -55,17 +55,17 @@ def get_dummy_list_2_deep() -> List:
     return list_
 
 
-def test_without_lambda():
+def test_non_nested_parsing():
     dummy = get_dummy_list()
     key = random.randint(1, 10)
-    out_ = holey_parsing(dummy, key)
+    out_ = list_fillna(dummy, key)
     should_be = parse_hard(dummy, key)
     assert out_ == should_be
 
 
-def test_2_deep():
+def test_2_deep_parsing():
     keys = [random.randint(1, 10), random.randint(1, 10)]
     dummy = get_dummy_list_2_deep()
-    out_ = holey_nested_parsing(dummy, keys)
+    out_ = list_fillna(dummy, keys)
     should_be = parse_hard_2_deep(dummy, keys)
     assert out_ == should_be
