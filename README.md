@@ -170,5 +170,24 @@ addresses = drill_down(people_data, ["contact", "address"])
 emails = drill_down(people_data, ["contact", "email"])
 ``` 
 
+## Contributing
 
+Contributions are welcome, please raise an issue or get in touch to suggest improvements or extensions, or to report bugs. 
+
+## License
+
+See [LICENSE](https://github.com/JonathanMair/databreeze/blob/main/LICENSE).
+
+## Contact
+
+Jonathan Mair — jonathan.mair@gmail.com
+
+Project link — [https://github.com/JonathanMair/databreeze](https://github.com/JonathanMair/databreeze)
+
+## Acknowledgements
+
+Partly inspired by stackoverflow answers such as: 
+
+- https://stackoverflow.com/a/30648524/18331020
+- https://stackoverflow.com/a/8915613
 

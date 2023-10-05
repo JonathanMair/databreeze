@@ -24,7 +24,7 @@ def _fill_exceptions(func, value_if_none: Optional[Any] = None, *args, **kwargs)
 
 
 # Ref: Stackoverflow: Programmatically accessing arbitrarily deeply-nested values in a dictionary:
-# https://stackoverflow.com/questions/30648317/programmatically-accessing-arbitrarily-deeply-nested-values-in-a-dictionary
+# https://stackoverflow.com/a/30648524/18331020
 def _get_values_from_arbitrary_keys_fillna(data: Dict, keys_: List, value_if_none: Optional[Any] = None) -> Any:
     """Return a specific value stored in `dict_` an arbitrary number of nested levels deep
 
