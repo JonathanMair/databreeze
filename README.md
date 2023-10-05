@@ -1,8 +1,12 @@
+
+
+![](https://repository-images.githubusercontent.com/700308734/49af767a-9db4-4336-bb64-76d6afc16319)
+
 # Databreeze
 
 Databreeze is a python package that provides utilities to simplify common data science operations.
 
-Currently contains the following functions, more planned soon!
+It currently contains the following functionality, more is planned soon!
 
 ## databreeze.dictionary_utils.drill_down()
 
