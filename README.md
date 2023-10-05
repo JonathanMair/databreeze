@@ -6,10 +6,7 @@ Currently contains the following functions, more planned soon!
 
 ## databreeze.dictionary_utils.drill_down()
 
-Iterates through a list of (possibly nested) dictionaries attempting to drill down to find a value using a list
-    of hierarchical dictionary keys. Returns a list containing the values found, or, where any key in the chain is
-    missing, a supplied default (defaults to `None`). Also works with a single dictionary, in which case it returns a
-    single value.
+Iterates through a list of (possibly nested) dictionaries attempting to drill down to find a value using a list of hierarchical dictionary keys. Returns a list containing the values found, or, where any key in the chain is missing, a supplied default (defaults to `None`). Also works with a single dictionary, in which case it returns a single value.
 
 ### Parameters
 
@@ -17,14 +14,14 @@ Iterates through a list of (possibly nested) dictionaries attempting to drill do
 - keys_: list of hierarchically ordered keys that will be used to drill down to the desired value
 - value_if_none: value to append to the list returned representing missing values, defaults to `None`
 
- ### Returns
+### Returns
  
 - value or a list of values representing the result from each dictionary supplied in `data`
 
 
 ### Usage
 
-Nested dictionaries: these have two levels, but could be any level of nesting:
+Consider the following nested dictionaries: these have two levels, but could be any level of nesting:
 
 ```
 d = {"name": "Tony", "contact": {"phone": 878787878, "city": "Madrid"}}
@@ -49,6 +46,12 @@ drill_down(d, ["name"])
 'Tony'
 ```
 
+### Rationale
+
+An important part of data science workflows is extracting information from the nested formats often provided by database APIs into two-dimensional formats so that it can be used with tools such as [numpy](https://github.com/numpy/numpy) and [pandas](https://github.com/pandas-dev/pandas). 
+
+Such data is commonly provided in a text format such as json, which is easily converted into a composite of python lists and dictionaries. 
+
 If it reaches a point in the chain of keys where the key doesn't exist, the error is caught and
 `None`is returned
 
@@ -69,7 +72,6 @@ drill_down([d, e], ["contact", "phone"], value_if_none="Missing Data")
 ```
 
 
-Data scientists often need each item in a series of data to contain the same fields. This allows for the use of tools such as those provided by pandas and numpy.
 
 However, public APIs often provide data in an irregular format, in the sense that each row can have different fields. This information is often provided in json format that is easily transformed into a python dictionary.  
 
