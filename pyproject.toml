@@ -1,14 +1,14 @@
 [tool.poetry]
-name = "dirty-dictionary"
-version = "0.1.0"
-description = "utility to provide quick and dirty way of parsing a list of dictionaries that may have inconsistent keys"
+name = "databreeze"
+version = "1.0.0"
+description = "Package providing tools to simplify data science operations"
 authors = ["Jonathan Mair <jonathan.mair@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "dirty_dictionary"}]
+packages = [{include = "databreeze"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = ">=3.11"
 
 
 [tool.poetry.group.dev.dependencies]
