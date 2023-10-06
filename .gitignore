@@ -3,7 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# JM added:
 .idea/
+local_resources_IGNORE/
+.DS_Store
 
 # C extensions
 *.so

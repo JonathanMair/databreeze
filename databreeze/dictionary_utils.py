@@ -38,7 +38,7 @@ def _get_values_from_arbitrary_keys_fillna(data: Dict, keys_: List, value_if_non
     return out_
 
 
-def drill_down(
+def drill(
         data: Union[List[Dict], Dict],
         keys_: Union[List[Any], Any],
         value_if_none: Optional[Any] = None
@@ -58,21 +58,21 @@ def drill_down(
 
         Pass the possibly nested dictionary and the list of keys to the function and it will drill down:
 
-        >>> drill_down(d, ["contact", "phone"])
+        >>> drill(d, ["contact", "phone"])
         878787878
 
-        >>> drill_down(d, ["name"])
+        >>> drill(d, ["name"])
         'Tony'
 
         If it reaches a point in the chain of keys where the key doesn't exist, the error is caught and
         `None`is returned
 
-        >>> drill_down(e, ["contact", "phone"]) is None
+        >>> drill(e, ["contact", "phone"]) is None
         True
 
         Pass a list of dictionaries, get a list of values or `value_if_none` if the Key is missing:
 
-        >>> drill_down([d, e], ["contact", "phone"], value_if_none="Missing Data")
+        >>> drill([d, e], ["contact", "phone"], value_if_none="Missing Data")
         [878787878, 'Missing Data']
 
     :param data: dictionary or list of dictionaries in which the values are to be found

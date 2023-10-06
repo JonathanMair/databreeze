@@ -8,14 +8,14 @@ Databreeze is a python package that provides utilities to simplify common data s
 
 It currently contains the following functionality, more is planned soon!
 
-## databreeze.dictionary_utils.drill_down()
+## databreeze.dictionary_utils.drill()
 
 Iterates through a list of (possibly nested) dictionaries attempting to drill down to find a value using a list of hierarchical dictionary keys. Returns a list containing the values found, or, where any key in the chain is missing, a supplied default (defaults to `None`). Also works with a single dictionary, in which case it returns a single value.
 
 ### Parameters
 
 - data: dictionary or list of dictionaries in which the values are to be found
-- keys_: list of hierarchically ordered keys that will be used to drill down to the desired value
+- keys_: list of hierarchically ordered keys that will be used to drill down to the desired value, the keys can also include list indices
 - value_if_none: value to append to the list returned representing missing values, defaults to `None`
 
 ### Returns
@@ -35,16 +35,16 @@ e = {"name": "Marta", "contact": {"city": "Madrid"}}
 Pass the possibly nested dictionary and the list of keys to the function and it will drill down:
 
 ```
-from databreeze.dictionary_utils import drill_down
+from databreeze.dictionary_utils import drill
 
-drill_down(d, ["contact", "phone"])
+drill(d, ["contact", "phone"])
 ```
 ```
 878787878
 ```
 
 ```
-drill_down(d, ["name"])
+drill(d, ["name"])
 ```
 ```
 'Tony'
@@ -52,32 +52,9 @@ drill_down(d, ["name"])
 
 ### Rationale
 
-An important part of data science workflows is extracting information from the nested formats often provided by database APIs into two-dimensional formats so that it can be used with tools such as [numpy](https://github.com/numpy/numpy) and [pandas](https://github.com/pandas-dev/pandas). 
+An important part of python data science workflows is formatting data so that it is tidy and two-dimensional, so that it can be used with tools such as [numpy](https://github.com/numpy/numpy) and [pandas](https://github.com/pandas-dev/pandas). 
 
-Such data is commonly provided in a text format such as json, which is easily converted into a composite of python lists and dictionaries. 
-
-If it reaches a point in the chain of keys where the key doesn't exist, the error is caught and
-`None`is returned
-
-```
-drill_down(e, ["contact", "phone"]) is None
-```
-```
-True
-```
-
-Pass a list of dictionaries, get a list of values or `value_if_none` if the Key is missing:
-
-```
-drill_down([d, e], ["contact", "phone"], value_if_none="Missing Data")
-```
-```
-[878787878, 'Missing Data']
-```
-
-
-
-However, public APIs often provide data in an irregular format, in the sense that each row can have different fields. This information is often provided in json format that is easily transformed into a python dictionary.  
+However, public data APIs often provide output in an irregular format, in the sense that each record can have different fields. 
 
 Consider a very simple example of a list of data items. 
 
@@ -100,15 +77,14 @@ print(names)
 ['Mandu', 'Jin']
 ```
 
-
-
-However, if we try this for a field that is not present for every record, like this: 
+However, if we try this for a field that is not present in every record, like this…
 
 
 ```
 names = [record["job"] for record in people_data]
 ```
-Then when the list comprehension comes tries to get ["job"] for the second record, a `KeyError` is thrown. 
+
+…then when the list comprehension comes tries to get ["job"] for the second record, a `KeyError` is thrown. 
 
 ```
 ----> 1 jobs = [record["job"] for record in people_data]
@@ -163,11 +139,11 @@ emails: [None, None, 'salva@slv.com']
 ``` 
 Clearly, when parsing typical complex data structures, checking for missing fields in deeply nested dictionaries quickly becomes very cumbersome.  
 
-Using drill_down(), the same can be achieved using much less code:
+Using drill(), the same can be achieved using much less code:
 
 ``` 
-addresses = drill_down(people_data, ["contact", "address"])
-emails = drill_down(people_data, ["contact", "email"])
+addresses = drill(people_data, ["contact", "address"])
+emails = drill(people_data, ["contact", "email"])
 ``` 
 
 ## Contributing

@@ -15,6 +15,7 @@ python = ">=3.11"
 pytest = "^7.4.2"
 lorem = "^0.1.1"
 pyaml = "^23.9.7"
+jupyterlab = "^4.0.6"
 
 [build-system]
 requires = ["poetry-core"]

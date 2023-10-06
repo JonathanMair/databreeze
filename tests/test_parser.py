@@ -1,4 +1,4 @@
-from databreeze.dictionary_utils import drill_down
+from databreeze.dictionary_utils import drill
 
 import random
 from typing import Dict, List, Any
@@ -58,7 +58,7 @@ def get_dummy_list_2_deep() -> List:
 def test_non_nested_parsing():
     dummy = get_dummy_list()
     key = random.randint(1, 10)
-    out_ = drill_down(dummy, key)
+    out_ = drill(dummy, key)
     should_be = parse_hard(dummy, key)
     assert out_ == should_be
 
@@ -66,6 +66,6 @@ def test_non_nested_parsing():
 def test_2_deep_parsing():
     keys = [random.randint(1, 10), random.randint(1, 10)]
     dummy = get_dummy_list_2_deep()
-    out_ = drill_down(dummy, keys)
+    out_ = drill(dummy, keys)
     should_be = parse_hard_2_deep(dummy, keys)
     assert out_ == should_be
